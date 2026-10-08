@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7f8">
+  <meta name="description" content="A little celebration for a beautiful new chapter. Lina's 21st birthday invitation — a fictional design demo.">
+  <title>Lina turns 21 — A birthday invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lateef:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fbf7f8;
+      --white: #fffdfd;
+      --ink: #35293b;
+      --muted: #827785;
+      --plum: #644967;
+      --plum-deep: #46354d;
+      --rose: #d89dae;
+      --rose-pale: #f4e3e9;
+      --lavender: #e9e3f2;
+      --silver: #e8e4e8;
+      --line: rgba(93, 69, 96, .14);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --arabic: "Lateef", "Noto Naskh Arabic", serif;
+      --shadow: 0 24px 70px rgba(79, 53, 76, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    body[dir="rtl"] { font-family: var(--arabic); font-size: 18px; }
+    body[dir="rtl"] button, body[dir="rtl"] select { font-family: var(--arabic); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { color: inherit; font: inherit; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; color: var(--plum);
+      font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    }
+    body[dir="rtl"] .eyebrow { letter-spacing: 0; font-size: .95rem; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--rose); }
+    .section-title {
+      margin: 12px 0 14px; font: 500 clamp(2.15rem, 4.5vw, 3.55rem)/1.12 var(--serif);
+      letter-spacing: -.045em;
+    }
+    body[dir="rtl"] .section-title { font-family: var(--arabic); line-height: 1.15; letter-spacing: 0; }
+    .section-copy { max-width: 570px; margin: 0; color: var(--muted); font-size: 1rem; }
+    body[dir="rtl"] .section-copy { font-size: 1.15rem; }
+
+    .topbar {
+      position: absolute; z-index: 5; inset: 0 0 auto; height: 84px;
+      display: flex; align-items: center; color: white;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .wordmark { text-decoration: none; color: inherit; font: 600 1.02rem var(--serif); letter-spacing: .13em; }
+    .wordmark span { color: #efc4d2; }
+    .language-switch {
+      display: flex; align-items: center; gap: 3px; padding: 4px;
+      border: 1px solid rgba(255,255,255,.22); border-radius: 999px;
+      background: rgba(255,255,255,.09); backdrop-filter: blur(12px);
+    }
+    .language-switch button {
+      min-width: 42px; min-height: 36px; padding: 0 10px; border: 0; border-radius: 999px;
+      background: transparent; color: rgba(255,255,255,.74); cursor: pointer;
+      font-size: .74rem; font-weight: 700; transition: .2s ease;
+    }
+    .language-switch button[aria-pressed="true"] { background: white; color: var(--plum-deep); }
+    button:focus-visible, a:focus-visible { outline: 3px solid #dba9b8; outline-offset: 4px; }
+
+    .hero {
+      min-height: 710px; position: relative; display: grid; align-items: center; overflow: hidden;
+      color: white; background:
+        radial-gradient(ellipse at 78% 27%, rgba(187,151,190,.37), transparent 36%),
+        radial-gradient(ellipse at 50% 100%, rgba(217,157,174,.24), transparent 52%),
+        linear-gradient(124deg, #49364f 0%, #59435f 49%, #76627d 100%);
+    }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; pointer-events: none; border: 1px solid rgba(255,255,255,.13);
+      border-radius: 50%; width: 570px; height: 570px;
+    }
+    .hero::before { right: -180px; top: 105px; }
+    .hero::after { right: -120px; top: 165px; width: 450px; height: 450px; border-color: rgba(255,255,255,.09); }
+    .hero-inner {
+      position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .84fr;
+      align-items: center; gap: 58px; padding: 116px 0 80px;
+    }
+    .hero-copy { animation: rise-in .9s both; }
+    .demo-note {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.22); border-radius: 999px; color: rgba(255,255,255,.83);
+      font-size: .65rem; letter-spacing: .14em; font-weight: 700;
+    }
+    .demo-note i { width: 6px; height: 6px; border-radius: 100%; background: #f1cad4; }
+    .hero-kicker { margin: 0 0 7px; color: #f3ced9; font-size: .86rem; letter-spacing: .2em; text-transform: uppercase; }
+    body[dir="rtl"] .hero-kicker { letter-spacing: 0; font-size: 1.1rem; }
+    .hero h1 { margin: 0; font: 500 clamp(5rem, 11vw, 9rem)/.91 var(--serif); letter-spacing: -.075em; }
+    .hero h1 span { display: block; padding-inline-start: .12em; font: italic 500 clamp(2.9rem, 6.7vw, 5.7rem)/1.25 var(--serif); letter-spacing: -.065em; color: #f4d6df; }
+    body[dir="rtl"] .hero h1, body[dir="rtl"] .hero h1 span { font-family: var(--arabic); letter-spacing: 0; line-height: 1.05; }
+    .hero-date { margin: 19px 0 0; font-size: .88rem; letter-spacing: .04em; color: rgba(255,255,255,.82); }
+    .hero-phrase { max-width: 360px; margin: 13px 0 27px; color: rgba(255,255,255,.76); font: italic 1.05rem/1.7 var(--serif); }
+    body[dir="rtl"] .hero-phrase { font: 1.35rem/1.55 var(--arabic); }
+    .button {
+      display: inline-flex; justify-content: center; align-items: center; gap: 9px; min-height: 51px;
+      padding: 0 24px; border: 1px solid transparent; border-radius: 999px; text-decoration: none;
+      font-size: .82rem; font-weight: 700; cursor: pointer; transition: transform .22s, box-shadow .22s, background .22s;
+    }
+    .button:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(47,31,51,.15); }
+    .button-light { background: #fffafa; color: var(--plum-deep); }
+    .button-outline { border-color: rgba(255,255,255,.45); color: white; background: rgba(255,255,255,.07); }
+    .hero-art { position: relative; justify-self: end; width: min(100%, 410px); aspect-ratio: .82; animation: rise-in .9s .16s both; }
+    .hero-image-frame {
+      position: absolute; inset: 2% 8% 5% 8%; padding: 12px 12px 42px; background: #fffaf9;
+      transform: rotate(3deg); box-shadow: 0 28px 70px rgba(23,16,29,.32);
+    }
+    .hero-monogram {
+      position: relative; display: flex; height: 100%; flex-direction: column; align-items: center; justify-content: center;
+      overflow: hidden; color: var(--plum); background:
+        radial-gradient(ellipse at 25% 23%, rgba(255,255,255,.95), transparent 37%),
+        radial-gradient(ellipse at 80% 76%, rgba(241,220,233,.9), transparent 44%),
+        linear-gradient(145deg, #eee5f0, #f8e9ec 52%, #e6deed);
+    }
+    .hero-monogram::before, .hero-monogram::after {
+      content: ""; position: absolute; width: 68%; aspect-ratio: 1; border: 1px solid rgba(100,73,103,.2); border-radius: 50%;
+    }
+    .hero-monogram::after { width: 52%; }
+    .monogram-initial { position: relative; z-index: 1; font: italic 500 clamp(6rem, 12vw, 9rem)/.9 var(--serif); }
+    .monogram-age { position: relative; z-index: 1; margin-top: 10px; color: #987c9b; font: 500 1.05rem var(--sans); letter-spacing: .3em; }
+    .frame-caption { position: absolute; inset: auto 12px 8px; text-align: center; color: #755e75; font: italic 1.04rem var(--serif); }
+    .hero-art::before {
+      content: ""; position: absolute; z-index: 2; top: 1%; right: 1%; width: 15px; height: 15px;
+      border: 1px solid #f7d9df; border-radius: 50%;
+      animation: twinkle 3.5s ease-in-out infinite;
+    }
+    .hero-art::after {
+      content: ""; position: absolute; z-index: 2; bottom: 7%; left: 2%; width: 10px; height: 10px;
+      border-radius: 50%; background: #ecc0d0;
+      animation: float 5s ease-in-out infinite;
+    }
+    body[dir="rtl"] .hero-art { justify-self: start; }
+    .balloon {
+      position: absolute; z-index: 0; width: 41px; height: 52px; border-radius: 50% 50% 48% 48%;
+      background: linear-gradient(145deg, rgba(245,211,223,.28), rgba(237,191,210,.08));
+      border: 1px solid rgba(255,255,255,.2); animation: float 7s ease-in-out infinite;
+    }
+    .balloon::after { content: ""; position: absolute; left: 50%; top: 100%; height: 55px; border-left: 1px solid rgba(255,255,255,.25); }
+    .balloon-one { top: 22%; left: 6%; }
+    .balloon-two { top: 35%; right: 4%; transform: scale(.75); animation-delay: -3s; }
+    .welcome { padding: 102px 0 108px; text-align: center; background: linear-gradient(180deg, #fbf7f8, #fffafa); }
+    .welcome .eyebrow { justify-content: center; }
+    .welcome .section-title { max-width: 700px; margin: 15px auto; }
+    .welcome .section-copy { max-width: 590px; margin-inline: auto; }
+    .welcome-mark { width: 38px; height: 1px; margin: 25px auto 0; background: var(--rose); }
+
+    .invitation { padding: 82px 0 96px; background: var(--white); }
+    .invitation-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 9%; }
+    .invitation-image { position: relative; min-height: 430px; }
+    .invitation-image img { width: 76%; height: 410px; margin-inline-start: 7%; object-fit: cover; border-radius: 48% 48% 8px 8px; box-shadow: var(--shadow); }
+    .invitation-image::after { content: ""; position: absolute; right: 2%; bottom: 12%; width: 24px; height: 24px; border: 1px solid var(--rose); border-radius: 50%; }
+    .image-note { position: absolute; bottom: 4%; left: 2%; width: 160px; padding: 13px 16px; background: var(--rose-pale); color: var(--plum); transform: rotate(-5deg); font: italic 1.05rem var(--serif); text-align: center; }
+    .invitation-text { margin: 25px 0 0; color: #665c69; font: 500 1.08rem/1.95 var(--serif); }
+    body[dir="rtl"] .invitation-text { font: 1.3rem/1.75 var(--arabic); }
+    .signature { display: block; margin-top: 22px; color: var(--plum); font: italic 1.5rem var(--serif); }
+
+    .details { padding: 87px 0 98px; background: #f1ecf4; }
+    .details-head { text-align: center; margin-bottom: 38px; }
+    .details-head .eyebrow { justify-content: center; }
+    .details-card {
+      display: grid; grid-template-columns: 1.1fr .9fr; align-items: stretch; max-width: 900px; margin: auto;
+      overflow: hidden; background: var(--white); border: 1px solid rgba(97,73,103,.08); border-radius: 22px; box-shadow: var(--shadow);
+    }
+    .details-info { padding: 42px 48px; }
+    .details-name { margin: 0 0 25px; font: 500 1.75rem/1.3 var(--serif); }
+    body[dir="rtl"] .details-name { font: 500 1.9rem/1.35 var(--arabic); }
+    .detail-row { display: grid; grid-template-columns: 28px 1fr; gap: 13px; align-items: start; padding: 11px 0; border-bottom: 1px solid var(--line); color: #655b68; }
+    .detail-row:last-of-type { border: 0; }
+    .detail-icon { display: grid; place-items: center; min-height: 25px; }
+    .detail-icon::before { content: ""; width: 7px; height: 7px; border: 1px solid var(--rose); border-radius: 50%; }
+    .details-map {
+      min-height: 330px; display: flex; flex-direction: column; justify-content: end; align-items: flex-start;
+      padding: 30px; color: white; background:
+        linear-gradient(180deg, transparent 16%, rgba(49,39,57,.78) 100%),
+        url("https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=85") center/cover;
+    }
+    .details-map .venue-label { margin: 0 0 4px; color: rgba(255,255,255,.76); font-size: .73rem; letter-spacing: .14em; text-transform: uppercase; }
+    .details-map strong { margin-bottom: 16px; font: 500 1.4rem var(--serif); }
+    .map-button { min-height: 42px; padding: 0 18px; font-size: .75rem; }
+
+    .countdown { position: relative; padding: 92px 0 100px; overflow: hidden; color: white; text-align: center; background: linear-gradient(125deg,#523d59,#735c78); }
+    .countdown::before, .countdown::after { content: ""; position: absolute; width: 8px; height: 8px; border: 1px solid #e8c1d1; border-radius: 50%; }
+    .countdown::before { top: 12%; left: 13%; }
+    .countdown::after { right: 12%; bottom: 16%; width: 5px; height: 5px; }
+    .countdown .eyebrow { color: #f0cad6; justify-content: center; }
+    .countdown .section-title { margin-bottom: 35px; }
+    .countdown-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 118px)); justify-content: center; gap: 16px; }
+    .time-box { padding: 17px 8px 14px; border: 1px solid rgba(255,255,255,.22); border-radius: 14px; background: rgba(255,255,255,.08); backdrop-filter: blur(7px); }
+    .time-number { display: block; font: 500 clamp(2rem, 5vw, 3rem)/1.1 var(--serif); font-variant-numeric: tabular-nums; }
+    .time-label { display: block; margin-top: 7px; color: rgba(255,255,255,.72); font-size: .65rem; letter-spacing: .13em; text-transform: uppercase; }
+    body[dir="rtl"] .time-label { letter-spacing: 0; font-size: .9rem; }
+    .celebration-started { margin: 0; font: 500 clamp(1.5rem,4vw,2.4rem) var(--serif); color: #fff2f5; }
+
+    .dress { padding: 88px 0 96px; }
+    .dress-card {
+      position: relative; max-width: 900px; margin: 0 auto; padding: 53px 26px 57px; overflow: hidden;
+      border: 1px solid #eee2ea; border-radius: 24px; text-align: center;
+      background: radial-gradient(circle at 15% 30%, rgba(249,227,235,.9), transparent 26%), radial-gradient(circle at 88% 79%, rgba(231,225,244,.9), transparent 27%), #fffdfd;
+      box-shadow: 0 18px 50px rgba(91,66,96,.07);
+    }
+    .dress-bow { width: 20px; height: 20px; margin: 0 auto 8px; border: 1px solid var(--rose); border-radius: 50%; }
+    .dress-card .eyebrow { justify-content: center; }
+    .dress-card .section-title { margin: 10px 0 5px; }
+    .dress-colors { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 24px 0 19px; }
+    .color-swatch { width: 41px; height: 41px; border: 4px solid white; border-radius: 50%; box-shadow: 0 4px 13px rgba(66,44,68,.16); }
+    .color-pink { background: #e6b3c3; }
+    .color-white { background: #fff; border: 1px solid #e8dfe5; }
+    .dress-card .section-copy { margin: auto; }
+
+    .gallery { padding: 84px 0 103px; background: #fffdfd; }
+    .gallery-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; }
+    .gallery-heading .section-copy { max-width: 335px; padding-bottom: 7px; font-size: .88rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; gap: 28px; }
+    .polaroid { margin: 0; padding: 11px 11px 40px; background: white; box-shadow: 0 16px 35px rgba(54,39,58,.12); transition: transform .3s, box-shadow .3s; }
+    .polaroid:nth-child(1) { transform: rotate(-3deg); }
+    .polaroid:nth-child(2) { transform: rotate(2deg) translateY(-12px); }
+    .polaroid:nth-child(3) { transform: rotate(-1.5deg); }
+    .polaroid:hover { z-index: 1; transform: rotate(0) translateY(-7px) scale(1.025); box-shadow: 0 24px 45px rgba(54,39,58,.18); }
+    .polaroid img { width: 100%; height: 295px; object-fit: cover; }
+    .polaroid figcaption { padding-top: 11px; color: #776778; text-align: center; font: italic 1rem var(--serif); }
+
+    .music { padding: 76px 0 82px; background: #f2edf4; }
+    .music-card { display: flex; justify-content: space-between; align-items: center; gap: 25px; max-width: 760px; margin: auto; padding: 25px 29px; border-radius: 18px; background: white; box-shadow: 0 14px 38px rgba(74,54,80,.08); }
+    .track { display: flex; align-items: center; gap: 18px; min-width: 0; }
+    .album-art { display: flex; justify-content: center; align-items: center; gap: 4px; flex: 0 0 70px; width: 70px; height: 70px; border-radius: 14px; background: linear-gradient(145deg,#d9afc2,#9e84ac); }
+    .album-art span { width: 3px; border-radius: 3px; background: white; }
+    .album-art span:nth-child(1), .album-art span:nth-child(5) { height: 12px; }
+    .album-art span:nth-child(2), .album-art span:nth-child(4) { height: 23px; }
+    .album-art span:nth-child(3) { height: 34px; }
+    .track-label { margin: 0; color: var(--muted); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; }
+    .track-title { margin: 3px 0 0; font: 500 1.4rem var(--serif); }
+    .music-controls { display: flex; align-items: center; gap: 10px; }
+    .play-button { min-width: 116px; }
+    .music-status { max-width: 760px; margin: 13px auto 0; color: var(--muted); font-size: .8rem; text-align: center; }
+    .music-status:empty { display: none; }
+    audio { display: none; }
+
+    .rsvp { padding: 96px 0 103px; text-align: center; background: linear-gradient(180deg,#fbf7f8,#f6eef2); }
+    .rsvp .eyebrow { justify-content: center; }
+    .rsvp .section-title { margin-bottom: 10px; }
+    .rsvp .section-copy { margin: 0 auto; }
+    .rsvp-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+    .button-rose { color: white; background: var(--plum); }
+    .button-rose:hover { background: #765b7b; }
+    .button-soft { border-color: #ded2df; color: var(--plum); background: rgba(255,255,255,.65); }
+    .rsvp-response { min-height: 28px; margin: 20px 0 0; color: var(--plum); font-weight: 600; }
+    .final-note { padding: 34px 24px 39px; color: white; text-align: center; background: var(--plum-deep); }
+    .final-note p { margin: 0; font: italic 1.3rem/1.6 var(--serif); }
+    body[dir="rtl"] .final-note p { font: 1.55rem/1.5 var(--arabic); }
+    .final-note small { display: block; margin-top: 9px; color: rgba(255,255,255,.56); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+    @keyframes twinkle { 0%,100% { opacity: .55; transform: scale(.88); } 50% { opacity: 1; transform: scale(1.12); } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 560px); }
+      .topbar { height: 70px; }
+      .hero { min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 37px; padding: 106px 0 55px; }
+      .hero-copy { text-align: center; }
+      .hero-copy .demo-note { margin-bottom: 24px; }
+      .hero-phrase { margin-inline: auto; }
+      .hero-art { justify-self: center; width: min(72%, 300px); }
+      body[dir="rtl"] .hero-art { justify-self: center; }
+      .hero-image-frame { inset: 2% 8% 6%; }
+      .balloon-one { left: 8%; top: 43%; }
+      .balloon-two { right: 7%; top: 62%; }
+      .star-one { top: 39%; left: 19%; }
+      .star-two { bottom: 14%; right: 16%; }
+      .welcome { padding: 73px 0 78px; }
+      .invitation { padding: 68px 0 76px; }
+      .invitation-grid { grid-template-columns: 1fr; gap: 33px; }
+      .invitation-image { min-height: 335px; width: min(100%, 430px); margin-inline: auto; }
+      .invitation-image img { height: 325px; width: 79%; }
+      .invitation-image::after { font-size: 3.5rem; }
+      .image-note { width: 135px; font-size: .9rem; }
+      .details { padding: 70px 0 76px; }
+      .details-card { grid-template-columns: 1fr; }
+      .details-info { padding: 30px 25px; }
+      .details-map { min-height: 250px; padding: 23px; }
+      .countdown { padding: 72px 0 79px; }
+      .countdown-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+      .time-box { padding: 15px 3px 12px; border-radius: 11px; }
+      .time-label { font-size: .56rem; letter-spacing: .06em; }
+      body[dir="rtl"] .time-label { font-size: .8rem; letter-spacing: 0; }
+      .dress { padding: 68px 0 75px; }
+      .dress-card { padding: 42px 22px 46px; }
+      .gallery { padding: 69px 0 81px; }
+      .gallery-heading { display: block; margin-bottom: 26px; }
+      .gallery-heading .section-copy { margin-top: 12px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .polaroid { padding: 8px 8px 31px; }
+      .polaroid img { height: clamp(145px, 44vw, 230px); }
+      .polaroid:nth-child(2) { transform: rotate(2deg); }
+      .polaroid:nth-child(3) { display: none; }
+      .music { padding: 59px 0 65px; }
+      .music-card { padding: 19px 16px; }
+      .album-art { flex-basis: 56px; width: 56px; height: 56px; }
+      .track { gap: 12px; }
+      .track-title { font-size: 1.2rem; }
+      .play-button { min-width: auto; padding-inline: 16px; }
+      .rsvp { padding: 74px 0 79px; }
+    }
+    @media (max-width: 390px) {
+      .shell { width: calc(100% - 30px); }
+      .hero h1 { font-size: 4.65rem; }
+      .hero h1 span { font-size: 2.72rem; }
+      .hero-inner { padding-top: 96px; }
+      .language-switch button { min-width: 37px; padding-inline: 8px; }
+      .music-card { align-items: flex-start; flex-direction: column; }
+      .music-controls { width: 100%; }
+      .play-button { flex: 1; }
+      .gallery-grid { gap: 12px; }
+    }
+  </style>
+</head>
+<body dir="ltr">
+  <header class="topbar">
+    <nav class="shell nav-inner" aria-label="Language and invitation">
+      <a class="wordmark" href="#home" aria-label="Lina's birthday invitation">LINA <span>· 21</span></a>
+      <div class="language-switch" aria-label="Choose language">
+        <button type="button" data-language="en" aria-pressed="true">EN</button>
+        <button type="button" data-language="fr" aria-pressed="false">FR</button>
+        <button type="button" data-language="ar" aria-pressed="false">عربي</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <span class="balloon balloon-one" aria-hidden="true"></span><span class="balloon balloon-two" aria-hidden="true"></span>
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <span class="demo-note"><i></i><span data-i18n="demo">A FICTIONAL DESIGN DEMO</span></span>
+          <p class="hero-kicker" data-i18n="name">Lina</p>
+          <h1 data-i18n="turning">is turning <span>21!</span></h1>
+          <p class="hero-date" data-i18n="dateTime">24 October 2026 &nbsp;·&nbsp; 7:00 PM</p>
+          <p class="hero-phrase" data-i18n="heroPhrase">A little celebration for a beautiful new chapter.</p>
+          <a class="button button-light" href="#invitation" data-i18n="heroButton">You're invited</a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-image-frame">
+            <div class="hero-monogram"><span class="monogram-initial">L</span><span class="monogram-age">21 · 2026</span></div>
+            <div class="frame-caption" data-i18n="frameCaption">a lovely little moment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="welcome reveal" id="welcome">
+      <div class="shell">
+        <span class="eyebrow" data-i18n="welcomeEyebrow">A note from Lina</span>
+        <h2 class="section-title" data-i18n="welcomeTitle">Twenty-one looks better with you in it.</h2>
+        <p class="section-copy" data-i18n="welcomeCopy">Good music, favorite people, and a little birthday magic — I'd love to share this new chapter with you.</p>
+        <div class="welcome-mark" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="invitation" id="invitation">
+      <div class="shell invitation-grid reveal">
+        <div class="invitation-image">
+          <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=850&q=85" alt="A softly lit celebration table decorated for a party">
+          <span class="image-note" data-i18n="imageNote">the night is ours</span>
+        </div>
+        <div>
+          <span class="eyebrow" data-i18n="inviteEyebrow">Save a little sparkle</span>
+          <h2 class="section-title" data-i18n="inviteTitle">You have a place at my table.</h2>
+          <p class="invitation-text" data-i18n="inviteCopy">I'm celebrating my 21st, and it wouldn't feel quite right without you there. Join me for an evening of music, laughter and all our favorite people on 24 October 2026 at 7:00 PM, at La Terrasse Event Hall in Bouira. Come ready for a lovely night.</p>
+          <span class="signature" data-i18n="signature">With love, Lina</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="details" id="details">
+      <div class="shell">
+        <div class="details-head reveal">
+          <span class="eyebrow" data-i18n="detailsEyebrow">All the little details</span>
+          <h2 class="section-title" data-i18n="detailsTitle">Meet me there</h2>
+        </div>
+        <div class="details-card reveal">
+          <div class="details-info">
+            <h3 class="details-name" data-i18n="eventName">Lina's 21st Birthday</h3>
+            <div class="detail-row"><span class="detail-icon" aria-hidden="true"></span><span data-i18n="eventDate">24 October 2026</span></div>
+            <div class="detail-row"><span class="detail-icon" aria-hidden="true"></span><span data-i18n="eventTime">7:00 PM</span></div>
+            <div class="detail-row"><span class="detail-icon" aria-hidden="true"></span><span data-i18n="eventVenue">La Terrasse Event Hall, Bouira</span></div>
+          </div>
+          <div class="details-map">
+            <p class="venue-label" data-i18n="venueLabel">A lovely evening awaits</p>
+            <strong data-i18n="venueShort">La Terrasse, Bouira</strong>
+            <a class="button button-outline map-button" href="#details" data-i18n="mapButton" aria-label="Location details coming soon">Location details <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="countdown" id="countdown">
+      <div class="shell reveal">
+        <span class="eyebrow" data-i18n="countdownEyebrow">Until the candles glow</span>
+        <h2 class="section-title" data-i18n="countdownTitle">The countdown is on</h2>
+        <div class="countdown-grid" id="countdownGrid" aria-label="Countdown to the birthday party" aria-live="polite">
+          <div class="time-box"><span class="time-number" id="days">00</span><span class="time-label" data-i18n="days">Days</span></div>
+          <div class="time-box"><span class="time-number" id="hours">00</span><span class="time-label" data-i18n="hours">Hours</span></div>
+          <div class="time-box"><span class="time-number" id="minutes">00</span><span class="time-label" data-i18n="minutes">Minutes</span></div>
+          <div class="time-box"><span class="time-number" id="seconds">00</span><span class="time-label" data-i18n="seconds">Seconds</span></div>
+        </div>
+        <p class="celebration-started" id="celebrationStarted" hidden></p>
+      </div>
+    </section>
+
+    <section class="dress" id="dress">
+      <div class="shell">
+        <div class="dress-card reveal">
+          <div class="dress-bow" aria-hidden="true"></div>
+          <span class="eyebrow" data-i18n="dressEyebrow">A little style note</span>
+          <h2 class="section-title" data-i18n="dressTitle">Dress code</h2>
+          <p class="section-copy" style="font:500 1.5rem var(--serif);color:var(--plum)" data-i18n="dressCode">Pink &amp; White</p>
+          <div class="dress-colors" aria-hidden="true"><span class="color-swatch color-pink"></span><span class="color-swatch color-white"></span></div>
+          <p class="section-copy" data-i18n="dressCopy">Wear your favorite pink or white, and bring a little extra glow to the evening.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="shell">
+        <div class="gallery-heading reveal">
+          <div><span class="eyebrow" data-i18n="galleryEyebrow">Moments worth keeping</span><h2 class="section-title" data-i18n="galleryTitle">A little moodboard</h2></div>
+          <p class="section-copy" data-i18n="galleryCopy">A few pretty placeholders for the memories we'll make together.</p>
+        </div>
+        <div class="gallery-grid reveal">
+          <figure class="polaroid"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=720&q=85" alt="Colorful lights at a party"><figcaption data-i18n="photoOne">a night to remember</figcaption></figure>
+          <figure class="polaroid"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=720&q=85" alt="Soft pastel balloons"><figcaption data-i18n="photoTwo">a little birthday magic</figcaption></figure>
+          <figure class="polaroid"><img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=720&q=85" alt="A celebration cake with candles"><figcaption data-i18n="photoThree">make a wish</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="music" id="music">
+      <div class="shell reveal">
+        <div class="music-card">
+          <div class="track">
+            <div class="album-art" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <div><p class="track-label" data-i18n="musicEyebrow">A little soundtrack</p><h2 class="track-title" data-i18n="songTitle">Birthday</h2></div>
+          </div>
+          <div class="music-controls">
+            <button class="button button-rose play-button" id="playButton" type="button" data-i18n="playButton" aria-label="Play Birthday">Play</button>
+            <button class="button button-soft play-button" id="pauseButton" type="button" data-i18n="pauseButton" aria-label="Pause Birthday">Pause</button>
+          </div>
+        </div>
+        <p class="music-status" id="musicStatus" aria-live="polite"></p>
+        <!-- Add a licensed audio file at this path or change the source to your own audio. -->
+        <audio id="birthdayAudio" preload="none" src="assets/audio/birthday.mp3"></audio>
+      </div>
+    </section>
+
+    <section class="rsvp" id="rsvp">
+      <div class="shell reveal">
+        <span class="eyebrow" data-i18n="rsvpEyebrow">Save your seat</span>
+        <h2 class="section-title" data-i18n="rsvpTitle">Will you celebrate with Lina?</h2>
+        <p class="section-copy" data-i18n="rsvpCopy">Let me know which moments we'll get to share.</p>
+        <div class="rsvp-actions">
+          <button type="button" class="button button-rose" data-rsvp="yes" data-i18n="rsvpYes">Yes, I'll be there!</button>
+          <button type="button" class="button button-soft" data-rsvp="no" data-i18n="rsvpNo">Sorry, I can't make it</button>
+        </div>
+        <p class="rsvp-response" id="rsvpResponse" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="final-note">
+    <p data-i18n="finalMessage">Let's make this birthday unforgettable. See you there!</p>
+    <small data-i18n="footerNote">Made with love for a little celebration</small>
+  </footer>
+
+  <script>
+    const copy = {
+      en: {
+        demo: "A FICTIONAL DESIGN DEMO", turning: "is turning <span>21!</span>", name: "Lina",
+        dateTime: "24 October 2026 &nbsp;·&nbsp; 7:00 PM", heroPhrase: "A little celebration for a beautiful new chapter.",
+        heroButton: "You're invited", frameCaption: "a lovely little moment",
+        welcomeEyebrow: "A note from Lina", welcomeTitle: "Twenty-one looks better with you in it.",
+        welcomeCopy: "Good music, favorite people, and a little birthday magic — I'd love to share this new chapter with you.",
+        imageNote: "the night is ours", inviteEyebrow: "Save a little sparkle", inviteTitle: "You have a place at my table.",
+        inviteCopy: "I'm celebrating my 21st, and it wouldn't feel quite right without you there. Join me for an evening of music, laughter and all our favorite people on 24 October 2026 at 7:00 PM, at La Terrasse Event Hall in Bouira. Come ready for a lovely night.",
+        signature: "With love, Lina", detailsEyebrow: "All the little details", detailsTitle: "Meet me there",
+        eventName: "Lina's 21st Birthday", eventDate: "24 October 2026", eventTime: "7:00 PM",
+        eventVenue: "La Terrasse Event Hall, Bouira", venueLabel: "A lovely evening awaits",
+        venueShort: "La Terrasse, Bouira", mapButton: "Location details <span aria-hidden=\"true\">↗</span>",
+        countdownEyebrow: "Until the candles glow", countdownTitle: "The countdown is on",
+        days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds",
+        celebrationStarted: "The celebration has begun!", dressEyebrow: "A little style note",
+        dressTitle: "Dress code", dressCode: "Pink & White",
+        dressCopy: "Wear your favorite pink or white, and bring a little extra glow to the evening.",
+        galleryEyebrow: "Moments worth keeping", galleryTitle: "A little moodboard",
+        galleryCopy: "A few pretty placeholders for the memories we'll make together.",
+        photoOne: "a night to remember", photoTwo: "a little birthday magic", photoThree: "make a wish",
+        musicEyebrow: "A little soundtrack", songTitle: "Birthday", playButton: "Play",
+        pauseButton: "Pause", musicMissing: "Add your licensed audio file at assets/audio/birthday.mp3 to play this track.",
+        musicError: "This track couldn't be played. Please check the audio file path.",
+        rsvpEyebrow: "Save your seat", rsvpTitle: "Will you celebrate with Lina?",
+        rsvpCopy: "Let me know which moments we'll get to share.",
+        rsvpYes: "Yes, I'll be there!", rsvpNo: "Sorry, I can't make it",
+        rsvpResponseYes: "Wonderful — Lina will be so happy to celebrate with you!",
+        rsvpResponseNo: "You'll be missed. Sending you warm birthday wishes.",
+        finalMessage: "Let's make this birthday unforgettable. See you there!",
+        footerNote: "Made with love for a little celebration",
+        ariaMap: "Location details coming soon", ariaPlay: "Play Birthday", ariaPause: "Pause Birthday",
+        ariaCountdown: "Countdown to the birthday party", ariaLang: "Choose language",
+        altCelebration: "A softly lit celebration table decorated for a party",
+        altParty: "Colorful lights at a party", altBalloons: "Soft pastel balloons", altCake: "A celebration cake with candles",
+        ariaWordmark: "Lina's birthday invitation"
+      },
+      fr: {
+        demo: "MAQUETTE FICTIVE", turning: "fête ses <span>21 ans !</span>", name: "Lina",
+        dateTime: "24 octobre 2026 &nbsp;·&nbsp; 19 h", heroPhrase: "Une jolie fête pour ouvrir un nouveau chapitre.",
+        heroButton: "Vous êtes invité·e", frameCaption: "un joli petit instant",
+        welcomeEyebrow: "Un mot de Lina", welcomeTitle: "Mes 21 ans seront plus beaux avec vous.",
+        welcomeCopy: "De la bonne musique, mes personnes préférées et un peu de magie — j'aimerais partager ce nouveau chapitre avec vous.",
+        imageNote: "ce soir, c'est le nôtre", inviteEyebrow: "Gardez une étincelle", inviteTitle: "Votre place est à ma table.",
+        inviteCopy: "Je fête mes 21 ans et cette soirée ne serait pas tout à fait la même sans vous. Retrouvez-moi pour une soirée de musique, de rires et de retrouvailles le 24 octobre 2026 à 19 h, à La Terrasse Event Hall, à Bouira. J'ai hâte de vous y retrouver.",
+        signature: "Avec affection, Lina", detailsEyebrow: "Les petits détails", detailsTitle: "On se retrouve là-bas",
+        eventName: "Les 21 ans de Lina", eventDate: "24 octobre 2026", eventTime: "19 h",
+        eventVenue: "La Terrasse Event Hall, Bouira", venueLabel: "Une belle soirée vous attend",
+        venueShort: "La Terrasse, Bouira", mapButton: "Infos du lieu <span aria-hidden=\"true\">↗</span>",
+        countdownEyebrow: "Avant que les bougies brillent", countdownTitle: "Le compte à rebours",
+        days: "Jours", hours: "Heures", minutes: "Minutes", seconds: "Secondes",
+        celebrationStarted: "La fête a commencé !", dressEyebrow: "Petite note de style",
+        dressTitle: "Tenue", dressCode: "Rose & blanc",
+        dressCopy: "Choisissez votre rose ou votre blanc préféré pour ajouter une jolie touche à la soirée.",
+        galleryEyebrow: "Des instants à garder", galleryTitle: "Un joli tableau d'inspiration",
+        galleryCopy: "Quelques images en attendant les beaux souvenirs que nous allons créer.",
+        photoOne: "une soirée inoubliable", photoTwo: "un peu de magie d'anniversaire", photoThree: "faites un vœu",
+        musicEyebrow: "La bande-son du moment", songTitle: "Birthday", playButton: "Écouter",
+        pauseButton: "Pause", musicMissing: "Ajoutez votre fichier audio autorisé dans assets/audio/birthday.mp3 pour écouter ce morceau.",
+        musicError: "Impossible de lire ce morceau. Vérifiez le chemin du fichier audio.",
+        rsvpEyebrow: "Gardez votre place", rsvpTitle: "Vous fêtez ça avec Lina ?",
+        rsvpCopy: "Dites-moi si nous partagerons ces jolis moments.",
+        rsvpYes: "Oui, je serai là !", rsvpNo: "Désolé·e, je ne pourrai pas venir",
+        rsvpResponseYes: "Génial — Lina sera ravie de fêter ça avec vous !",
+        rsvpResponseNo: "Vous nous manquerez. Nous penserons bien à vous.",
+        finalMessage: "Rendons cet anniversaire inoubliable. À très bientôt !",
+        footerNote: "Créé avec amour pour une jolie fête",
+        ariaMap: "Les informations du lieu seront bientôt disponibles", ariaPlay: "Écouter Birthday",
+        ariaPause: "Mettre Birthday en pause", ariaCountdown: "Compte à rebours avant la fête",
+        ariaLang: "Choisir la langue", altCelebration: "Une table de fête décorée dans une douce lumière",
+        altParty: "Des lumières colorées à une fête", altBalloons: "Des ballons pastel", altCake: "Un gâteau de fête avec des bougies",
+        ariaWordmark: "Invitation aux 21 ans de Lina"
+      },
+      ar: {
+        demo: "تصميم تجريبي لحدث خيالي", turning: "تحتفل بعيدها <span>٢١!</span>", name: "لينا",
+        dateTime: "٢٤ أكتوبر ٢٠٢٦ &nbsp;·&nbsp; ٧:٠٠ مساءً", heroPhrase: "احتفال صغير ببداية فصل جديد وجميل.",
+        heroButton: "أنت مدعوّ", frameCaption: "لحظة جميلة",
+        welcomeEyebrow: "كلمة من لينا", welcomeTitle: "تكتمل فرحتي بوجودكم معي.",
+        welcomeCopy: "موسيقى جميلة، وأحبّ الناس إلى قلبي، ولمسة من سحر عيد الميلاد — يسعدني أن أشارككم بداية هذا الفصل الجديد.",
+        imageNote: "هذه ليلتنا الجميلة", inviteEyebrow: "احتفظوا ببريق من الفرح",
+        inviteTitle: "مكانكم محفوظ إلى جانبي.",
+        inviteCopy: "أحتفل بعيد ميلادي الحادي والعشرين، ولن تكتمل فرحتي من دونكم. انضموا إليّ في أمسية مليئة بالموسيقى والضحكات ولقاء الأحبة، يوم ٢٤ أكتوبر ٢٠٢٦ على الساعة السابعة مساءً، في قاعة لا تيراس بالبويرة. بانتظار ليلة جميلة معكم.",
+        signature: "بكل محبة، لينا", detailsEyebrow: "تفاصيل الأمسية", detailsTitle: "ألقاكم هناك",
+        eventName: "عيد ميلاد لينا الحادي والعشرون", eventDate: "٢٤ أكتوبر ٢٠٢٦",
+        eventTime: "٧:٠٠ مساءً", eventVenue: "قاعة لا تيراس، البويرة",
+        venueLabel: "أمسية جميلة بانتظاركم", venueShort: "لا تيراس، البويرة",
+        mapButton: "تفاصيل الموقع <span aria-hidden=\"true\">↗</span>",
+        countdownEyebrow: "حتى تضيء الشموع", countdownTitle: "بدأ العدّ التنازلي",
+        days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثوانٍ",
+        celebrationStarted: "لقد بدأ الاحتفال!", dressEyebrow: "لمسة أنيقة",
+        dressTitle: "زيّ الحفل", dressCode: "الوردي والأبيض",
+        dressCopy: "اختاروا أجمل درجات الوردي أو الأبيض، وأضيفوا لمستكم المشرقة إلى الأمسية.",
+        galleryEyebrow: "لحظات تستحق الذكرى", galleryTitle: "أجواء نحبّها",
+        galleryCopy: "صور تجريبية جميلة إلى أن نصنع معاً ذكرياتنا الخاصة.",
+        photoOne: "ليلة لا تُنسى", photoTwo: "لمسة من سحر الميلاد", photoThree: "تمنّوا أمنية",
+        musicEyebrow: "موسيقى الأمسية", songTitle: "Birthday", playButton: "تشغيل",
+        pauseButton: "إيقاف مؤقت", musicMissing: "أضيفوا ملفاً صوتياً مرخّصاً إلى assets/audio/birthday.mp3 لتشغيل المقطوعة.",
+        musicError: "تعذّر تشغيل المقطوعة. يُرجى التحقق من مسار الملف الصوتي.",
+        rsvpEyebrow: "احجزوا مكانكم", rsvpTitle: "هل تحتفلون مع لينا؟",
+        rsvpCopy: "أخبروني إن كنتم ستشاركونني هذه اللحظات الجميلة.",
+        rsvpYes: "نعم، سأكون معكم!", rsvpNo: "عذراً، لن أتمكن من الحضور",
+        rsvpResponseYes: "رائع — ستسعد لينا كثيراً بالاحتفال معكم!",
+        rsvpResponseNo: "سنفتقدكم. أطيب الأمنيات لكم!",
+        finalMessage: "لنجعل هذا العيد ذكرى لا تُنسى. أراكم قريباً!",
+        footerNote: "صُمّم بكل محبة لاحتفال جميل",
+        ariaMap: "ستتوفر تفاصيل الموقع قريباً", ariaPlay: "تشغيل Birthday",
+        ariaPause: "إيقاف Birthday مؤقتاً", ariaCountdown: "العدّ التنازلي حتى عيد الميلاد",
+        ariaLang: "اختيار اللغة", altCelebration: "طاولة احتفال مزينة بإضاءة هادئة",
+        altParty: "أضواء ملوّنة في حفلة", altBalloons: "بالونات بألوان باستيلية ناعمة",
+        altCake: "كعكة احتفال تزيّنها الشموع", ariaWordmark: "دعوة عيد ميلاد لينا"
+      }
+    };
+
+    let currentLanguage = "en";
+    const audio = document.getElementById("birthdayAudio");
+    const playButton = document.getElementById("playButton");
+    const pauseButton = document.getElementById("pauseButton");
+    const musicStatus = document.getElementById("musicStatus");
+    let playRequested = false;
+    let musicState = "missing";
+
+    function updateMusicStatus() {
+      const messages = { missing: "musicMissing", error: "musicError" };
+      musicStatus.textContent = messages[musicState] ? copy[currentLanguage][messages[musicState]] : "";
+    }
+
+    function setLanguage(language) {
+      currentLanguage = language;
+      const words = copy[language];
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+      document.body.dir = document.documentElement.dir;
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        if (words[key]) element.innerHTML = words[key];
+      });
+      document.querySelectorAll("[data-language]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.language === language));
+      });
+      document.querySelector(".language-switch").setAttribute("aria-label", words.ariaLang);
+      document.querySelector(".wordmark").setAttribute("aria-label", words.ariaWordmark);
+      document.querySelector(".countdown-grid").setAttribute("aria-label", words.ariaCountdown);
+      document.querySelector(".map-button").setAttribute("aria-label", words.ariaMap);
+      playButton.setAttribute("aria-label", words.ariaPlay);
+      pauseButton.setAttribute("aria-label", words.ariaPause);
+      document.querySelectorAll(".invitation-image img, .polaroid img").forEach((image, index) => {
+        image.alt = [words.altCelebration, words.altParty, words.altBalloons, words.altCake][index];
+      });
+      updateMusicStatus();
+      updateCountdown();
+    }
+
+    document.querySelectorAll("[data-language]").forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.language));
+    });
+
+    function updateCountdown() {
+      const eventTime = new Date(2026, 9, 24, 19, 0, 0);
+      const remaining = eventTime.getTime() - Date.now();
+      if (remaining <= 0) {
+        document.getElementById("countdownGrid").hidden = true;
+        const started = document.getElementById("celebrationStarted");
+        started.hidden = false;
+        started.textContent = copy[currentLanguage].celebrationStarted;
+        return;
+      }
+      const secondsTotal = Math.floor(remaining / 1000);
+      const locale = currentLanguage === "ar" ? "ar" : currentLanguage;
+      const numberFormat = new Intl.NumberFormat(locale);
+      const zero = numberFormat.format(0);
+      const formatNumber = (value) => numberFormat.format(value).padStart(2, zero);
+      document.getElementById("days").textContent = formatNumber(Math.floor(secondsTotal / 86400));
+      document.getElementById("hours").textContent = formatNumber(Math.floor((secondsTotal % 86400) / 3600));
+      document.getElementById("minutes").textContent = formatNumber(Math.floor((secondsTotal % 3600) / 60));
+      document.getElementById("seconds").textContent = formatNumber(secondsTotal % 60);
+    }
+
+    playButton.addEventListener("click", async () => {
+      playRequested = true;
+      musicState = "ready";
+      updateMusicStatus();
+      try {
+        await audio.play();
+      } catch (error) {
+        musicState = audio.error ? "missing" : "error";
+        updateMusicStatus();
+      }
+    });
+    pauseButton.addEventListener("click", () => {
+      audio.pause();
+      playRequested = false;
+      musicState = audio.error ? "missing" : "ready";
+      updateMusicStatus();
+    });
+    audio.addEventListener("error", () => {
+      musicState = "missing";
+      updateMusicStatus();
+    });
+    audio.addEventListener("canplay", () => { musicState = "ready"; updateMusicStatus(); });
+    audio.addEventListener("playing", () => { musicState = "playing"; updateMusicStatus(); });
+    document.querySelectorAll("[data-rsvp]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const key = button.dataset.rsvp === "yes" ? "rsvpResponseYes" : "rsvpResponseNo";
+        document.getElementById("rsvpResponse").textContent = copy[currentLanguage][key];
+      });
+    });
+
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver((entries, activeObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            activeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      document.querySelectorAll(".reveal").forEach((section) => observer.observe(section));
+    } else {
+      document.querySelectorAll(".reveal").forEach((section) => section.classList.add("is-visible"));
+    }
+
+    setLanguage("en");
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
